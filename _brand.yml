@@ -2,10 +2,10 @@ meta:
   name: EGPROC
   link: https://egproc.org
 
-# Artwork is the WordPress site's logo (uploads/2015/05/EGPROC_1.png),
-# unchanged: "mark" is WordPress's own header crop (no taglines) for the
-# navbar, "icon" is the "E" glyph cut out for the favicon. All three are
-# black on transparent, so dark mode simply inverts them with CSS.
+# Logo artwork: full logo is the original WordPress logo unchanged;
+# mark is a crop of just the EGPROC letters from it (taglines removed)
+# for the navbar; icon is the "E" glyph for the favicon. All three are
+# black on transparent and are inverted with CSS in dark mode.
 logo:
   images:
     mark:
