@@ -9,9 +9,9 @@ date: 2025-06-28
 
 <p>Here is a glimpse at the program: </p>
 
-<figure class="wp-block-image size-large"><a href="/images/2025/06/EGPROC2025_Day1.png"><img src="/images/2025/06/EGPROC2025_Day1.png" alt="" class="wp-image-904"/></a></figure>
+<figure class="wp-block-image size-large"><a href="/images/2025/06/EGPROC2025_Day1.png"><img src="/images/2025/06/EGPROC2025_Day1.png" alt="EGPROC 2025 program, day 1" class="wp-image-904"/></a></figure>
 
-<figure class="wp-block-image size-large"><a href="/images/2025/06/EGPROC2025_Day2.png"><img src="/images/2025/06/EGPROC2025_Day2.png" alt="" class="wp-image-905"/></a></figure>
+<figure class="wp-block-image size-large"><a href="/images/2025/06/EGPROC2025_Day2.png"><img src="/images/2025/06/EGPROC2025_Day2.png" alt="EGPROC 2025 program, day 2" class="wp-image-905"/></a></figure>
 
 <p>Thanks to all the participants!</p>
 

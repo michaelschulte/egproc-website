@@ -6,37 +6,39 @@ One-time migration script -- not part of the served site.
 """
 
 import json
+import os
 from pathlib import Path
 
 from content_map import (
-    APPEND, BODY_OVERRIDES, DROP_IDS, MEETINGS_PAGE_ID, TEXT_FIXES, TITLE_OVERRIDES,
-    resolve_target,
+    APPEND, BODY_OVERRIDE_NOTES, BODY_OVERRIDES, DROP_IDS, MEETINGS_PAGE_ID, TEXT_FIXES,
+    TITLE_OVERRIDES, resolve_target,
 )
 from media import copy_and_get_url
 from rewrite import (
-    parse_meetings, render_meetings_table, rewrite_attachment_links,
+    is_meeting_line, parse_meetings, render_meetings_table, rewrite_attachment_links,
     rewrite_internal_links, rewrite_wp_uploads_links, strip_gutenberg,
     unwrap_safelinks,
 )
 
 REPO_ROOT = Path(__file__).parent.parent
 EXTRACTED = Path(__file__).parent / "_extracted"
-UPLOADS_ROOT = Path(
-    "/Users/michael/git_stuff/wp_egproc/egproc-org-20260922-113210-8q9p1q94pb7l/uploads"
-)
+UPLOADS_ROOT = Path(os.environ.get(
+    "EGPROC_UPLOADS_ROOT",
+    "/Users/michael/git_stuff/wp_egproc/egproc-org-20260922-113210-8q9p1q94pb7l/uploads",
+))
 IMAGES_OUT = REPO_ROOT / "images"
 FILES_OUT = REPO_ROOT / "files"
 
 
 def load(name):
-    return json.loads((EXTRACTED / name).read_text())
+    return json.loads((EXTRACTED / name).read_text(encoding="utf-8"))
 
 
 def yaml_quote(value):
     return value.replace("\\", "\\\\").replace('"', '\\"')
 
 
-def build_frontmatter(item, section):
+def build_frontmatter(item):
     title = TITLE_OVERRIDES.get(item["id"], item["title"])
     lines = ["---", f'title: "{yaml_quote(title)}"']
     if item["type"] == "post":
@@ -75,19 +77,20 @@ def transform_content(item, ctx):
                 raise ValueError(f"text fix for id {id_} did not match: {old!r}")
             content = content.replace(old, new)
     if id_ == MEETINGS_PAGE_ID:
-        intro = "\n".join(l for l in content.splitlines() if not l[:4].isdigit()).strip()
+        intro = "\n".join(l for l in content.splitlines() if not is_meeting_line(l)).strip()
         content = intro + "\n\n" + render_meetings_table(parse_meetings(content))
     if id_ in APPEND:
         content = content.rstrip() + "\n\n" + APPEND[id_]
     return content.strip()
 
 
-def vendor_all_pdfs(attachment_files):
+def vendor_all_pdfs(ctx):
     copied = unresolved = 0
-    for rel_path in attachment_files.values():
+    for rel_path in ctx["attachment_files"].values():
         if not rel_path.lower().endswith(".pdf"):
             continue
-        if copy_and_get_url(rel_path, UPLOADS_ROOT, IMAGES_OUT, FILES_OUT) is None:
+        if copy_and_get_url(
+                rel_path, ctx["uploads_root"], ctx["images_out"], ctx["files_out"]) is None:
             unresolved += 1
         else:
             copied += 1
@@ -117,8 +120,8 @@ def write_content_audit(dropped, written):
         lines.append(f'- WP id {id_}: title "{original_titles[id_]}" → '
                      f'"{new_title}" (matches the navbar item).')
     for id_ in sorted(BODY_OVERRIDES):
-        lines.append(f"- WP id {id_}: body replaced by a plain-text version "
-                     "(pasted email markup removed; wording unchanged).")
+        note = BODY_OVERRIDE_NOTES.get(id_, "pasted email markup removed; wording unchanged")
+        lines.append(f"- WP id {id_}: body replaced by a plain-text version ({note}).")
     for id_, text in sorted(APPEND.items()):
         lines.append(f"- WP id {id_}: appended: {text}")
     lines.append("- Outlook safelinks wrappers unwrapped; Gutenberg block comments, "
@@ -129,7 +132,7 @@ def write_content_audit(dropped, written):
     lines += ["", f"## Migrated: {len(written)} items", ""]
     for item, section, filename in sorted(written, key=lambda w: f"{w[1]}/{w[2]}"):
         lines.append(f"- **{item['title']}** (WP id {item['id']}) → {section}/{filename}.qmd")
-    (REPO_ROOT / "CONTENT_AUDIT.md").write_text("\n".join(lines) + "\n")
+    (REPO_ROOT / "CONTENT_AUDIT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main():
@@ -150,9 +153,9 @@ def main():
         out_dir.mkdir(parents=True, exist_ok=True)
         body = transform_content(item, ctx)
         (out_dir / f"{filename}.qmd").write_text(
-            f"{build_frontmatter(item, section)}\n\n{body}\n")
+            f"{build_frontmatter(item)}\n\n{body}\n", encoding="utf-8")
         written.append((item, section, filename))
-    copied, unresolved = vendor_all_pdfs(attachment_files)
+    copied, unresolved = vendor_all_pdfs(ctx)
     write_content_audit(dropped, written)
     print(f"Wrote {len(written)} .qmd files, dropped {len(dropped)} items.")
     print(f"Vendored {copied} PDFs ({unresolved} unresolved).")

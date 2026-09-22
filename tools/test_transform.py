@@ -9,16 +9,16 @@ class TestFrontmatter(unittest.TestCase):
     def test_posts_get_title_and_date(self):
         item = {"id": 910, "type": "post", "title": "EGPROC 2026",
                 "date": "2026-03-19 10:00:00", "slug": "egproc-2026"}
-        self.assertEqual(build_frontmatter(item, "news"),
+        self.assertEqual(build_frontmatter(item),
                          '---\ntitle: "EGPROC 2026"\ndate: 2026-03-19\n---')
 
     def test_pages_get_title_only_and_quotes_are_escaped(self):
         item = {"id": 825, "type": "page", "title": 'Say "hi"', "date": "2009-02-10 00:00:00"}
-        self.assertEqual(build_frontmatter(item, "about"), '---\ntitle: "Say \\"hi\\""\n---')
+        self.assertEqual(build_frontmatter(item), '---\ntitle: "Say \\"hi\\""\n---')
 
     def test_meetings_page_title_is_overridden_to_match_the_navbar(self):
         item = {"id": 64, "type": "page", "title": "History", "date": "2012-02-07 00:00:00"}
-        self.assertEqual(build_frontmatter(item, "meetings"), '---\ntitle: "Meetings"\n---')
+        self.assertEqual(build_frontmatter(item), '---\ntitle: "Meetings"\n---')
 
 
 class TestTransformContent(unittest.TestCase):
@@ -57,9 +57,11 @@ class TestTransformContent(unittest.TestCase):
     def test_body_override_and_append_are_applied(self):
         item = {"id": 804, "type": "post", "content": "<div>junk</div>"}
         self.assertIn("36th meeting", transform_content(item, self.ctx))
-        item = {"id": 825, "type": "page", "content": "About text."}
+        item = {"id": 825, "type": "page",
+                "content": "About text with new developements, experiments or methods."}
         out = transform_content(item, self.ctx)
-        self.assertTrue(out.startswith("About text.\n\n"))
+        self.assertTrue(
+            out.startswith("About text with new developments, experiments or methods.\n\n"))
         self.assertIn("https://eadm.eu", out)
 
 

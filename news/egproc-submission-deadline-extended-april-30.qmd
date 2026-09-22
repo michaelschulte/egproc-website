@@ -7,14 +7,14 @@ The **36th meeting of the European Group of Process Tracing Studies (EGPROC)** w
 
 Due to numerous requests, **the deadline for abstract submission has been extended until the 30th of April**.
 
-If you have not done so already, we invite you to submit your abstract through the conference website: <http://tiny.cc/egproc2017>
+If you have not done so already, we invite you to submit your abstract through the conference website.
 
 Please share this information with other researchers who might be interested in the topic.
 
 We look forward to having you in Galway, Ireland.
 
 *EGPROC 2017 organizing committee:*
-Denis O'Hora (<denis.ohora@nuigalway.ie>),
-Arkady Zgonnikov (<arkady.zgonnikov@nuigalway.ie>),
-Avril Hand (<a.hand1@nuigalway.ie>),
-Santi Garcia (<s.garciaguerrero1@nuigalway.ie>)
+Denis O'Hora (denis.ohora@nuigalway.ie),
+Arkady Zgonnikov (arkady.zgonnikov@nuigalway.ie),
+Avril Hand (a.hand1@nuigalway.ie),
+Santi Garcia (s.garciaguerrero1@nuigalway.ie)

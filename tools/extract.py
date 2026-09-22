@@ -2,8 +2,11 @@
 JSON. Uses JSON_ARRAYAGG(JSON_OBJECT(...)) so MySQL itself handles all
 string escaping -- far more robust than parsing the raw SQL dump by hand.
 
-Must invoke the mysql CLI with -r (raw mode): plain -N -B batch output
-double-escapes backslashes inside the JSON text and corrupts it.
+Must invoke the mariadb CLI with -r (raw mode): plain -N -B batch output
+double-escapes backslashes inside the JSON text and corrupts it. The
+root/root login below is the throwaway import container's own default
+credentials, not a secret -- the container is local scaffolding, discarded
+once extraction is done.
 """
 
 import json
@@ -58,7 +61,8 @@ def main():
         for row in data:
             if row.get("content") is not None:
                 row["content"] = row["content"].replace("\r\n", "\n")
-        (OUT_DIR / filename).write_text(json.dumps(data, indent=2, ensure_ascii=False))
+        (OUT_DIR / filename).write_text(
+            json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"{filename}: {len(data)} rows")
 
 

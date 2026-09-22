@@ -9,8 +9,8 @@ check_rendered_html() scans the rendered site under _site/ and verifies
 that every same-origin href in the emitted HTML resolves to a real file
 under _site/. The source check alone cannot catch a link that is
 syntactically fine in the .qmd but has no rendered target -- e.g. an
-extensionless href="/membership/index", which the source check happily
-resolves to membership/index.qmd while the rendered page 404s.
+extensionless href="/meetings/index", which the source check happily
+resolves to meetings/index.qmd while the rendered page 404s.
 
 External (http/https/mailto) links are not checked -- they're outside
 this migration's control.

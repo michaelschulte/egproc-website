@@ -19,8 +19,12 @@ why, every text fix applied, and where each migrated item landed.
 - WP id 64: `1016 Warwik, United Kingdom, Program (Walasek &amp; Mullett)` → `2026 Warwick, United Kingdom, <a href="/news/egproc-2026.qmd">Program</a> (Walasek &amp; Mullett)`
 - WP id 788: `https://vimeo.com/105023242` → `<a href="https://vimeo.com/105023242">Video: Galway (Vimeo)</a>`
 - WP id 793: `alt=""` → `alt="EGPROC 2017 poster"`
+- WP id 793: `Abstract submissions and registration are now open at&nbsp;<b><a href="http://tiny.cc/egproc2017" target="_blank" rel="noopener noreferrer">http://tiny.cc/egproc2017</a></b>` → `Abstract submissions and registration are now open.`
+- WP id 825: `new developements, experiments or methods` → `new developments, experiments or methods`
+- WP id 903: `alt="" class="wp-image-904"` → `alt="EGPROC 2025 program, day 1" class="wp-image-904"`
+- WP id 903: `alt="" class="wp-image-905"` → `alt="EGPROC 2025 program, day 2" class="wp-image-905"`
 - WP id 64: title "History" → "Meetings" (matches the navbar item).
-- WP id 804: body replaced by a plain-text version (pasted email markup removed; wording unchanged).
+- WP id 804: body replaced by a plain-text version (pasted email markup removed; wording unchanged except: recycled tiny.cc link removed, retired nuigalway.ie addresses de-linked).
 - WP id 825: appended: EGPROC is closely associated with the [European Association for Decision Making (EADM)](https://eadm.eu), whose members make up most of the group.
 - Outlook safelinks wrappers unwrapped; Gutenberg block comments, empty paragraphs and `&nbsp;` spacers removed everywhere.
 - Program links on the dead host `eadm.abcde.biz` and on `egproc.org/wp-content/uploads/` point at the vendored PDFs in `files/`.

@@ -114,7 +114,7 @@ site), following the eadm layout:
 
 1. `extract.py` — queries the scratch MariaDB via
    `JSON_ARRAYAGG(JSON_OBJECT(...))` with `mysql -r`, writing
-   `tools/_extracted/{pages,posts,categories,attachments}.json`
+   `tools/_extracted/{pages,posts,attachments}.json`
    (gitignored).
 2. `content_map.py` — the curated keep/drop list and slug → output path map
    from §3–4; the single place where curation decisions live.

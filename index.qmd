@@ -29,7 +29,7 @@ listing:
 ::: {.egproc-lead}
 EGPROC is a group of researchers who share a common interest in process
 tracing methods and theory. Every year the group meets to discuss new
-developments, experiments and methods in the area of process tracing.
+developments, experiments or methods in the area of process tracing.
 :::
 
 ::: {.egproc-actions}

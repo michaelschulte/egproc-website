@@ -16,7 +16,8 @@ Every push to `main` publishes the site to a preview on GitHub Pages:
 **https://michaelschulte.github.io/egproc-website/** (egproc.org itself
 still serves the WordPress site). The workflow in
 `.github/workflows/publish.yml` renders with Quarto and deploys a Pages
-artifact; progress shows under the repository's **Actions** tab.
+artifact; progress shows under the repository's **Actions** tab. The
+workflow enables GitHub Pages (source: GitHub Actions) on its first run.
 
 CI renders with the `preview` profile (`_quarto-preview.yml`), which adds a
 `noindex` tag to every page so the preview stays out of search results.

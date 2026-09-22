@@ -94,6 +94,12 @@ def rewrite_internal_links(content, slug_to_path):
     return _INTERNAL_LINK_RE.sub(replace, content)
 
 
+def is_meeting_line(line) -> bool:
+    """True if `line` starts with a 4-digit year, as EGPROC meeting rows do
+    on the History page (e.g. '2025 Den Bosch...', '2020/21 Tilburg...')."""
+    return re.match(r"^\d{4}", line) is not None
+
+
 def parse_meetings(content):
     """Parse the History page's 'YEAR Place, Country, <a>Program</a>
     (Organisers)' lines. Lines not starting with a year are intro text
@@ -102,7 +108,7 @@ def parse_meetings(content):
     rows = []
     for line in content.splitlines():
         line = line.strip()
-        if not re.match(r"^\d{4}", line):
+        if not is_meeting_line(line):
             continue
         match = _MEETING_LINE_RE.match(line)
         if match is None:

@@ -25,6 +25,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      # Enables Pages with the Actions source on first run, so a fresh
+      # repo deploys without a manual settings change.
+      - uses: actions/configure-pages@v5
+
       - uses: quarto-dev/quarto-actions/setup@v2
         with:
           # Pinned to the version the site is developed with locally.

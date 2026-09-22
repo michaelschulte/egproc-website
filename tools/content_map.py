@@ -66,32 +66,61 @@ TEXT_FIXES = {
         ("https://vimeo.com/105023242",
          '<a href="https://vimeo.com/105023242">Video: Galway (Vimeo)</a>'),
     ],
-    # The 2017 poster image had an empty alt.
-    793: [('alt=""', 'alt="EGPROC 2017 poster"')],
+    793: [
+        # The 2017 poster image had an empty alt.
+        ('alt=""', 'alt="EGPROC 2017 poster"'),
+        # Same recycled tiny.cc shortener as the 804 override (now redirects
+        # to spam); dropped rather than kept as a dead/unsafe link.
+        (
+            'Abstract submissions and registration are now open at&nbsp;'
+            '<b><a href="http://tiny.cc/egproc2017" target="_blank" '
+            'rel="noopener noreferrer">http://tiny.cc/egproc2017</a></b>',
+            "Abstract submissions and registration are now open.",
+        ),
+    ],
+    # The 2025 program images had an empty alt.
+    903: [
+        ('alt="" class="wp-image-904"', 'alt="EGPROC 2025 program, day 1" class="wp-image-904"'),
+        ('alt="" class="wp-image-905"', 'alt="EGPROC 2025 program, day 2" class="wp-image-905"'),
+    ],
     # The WordPress HTML block never closed its <p> tag.
     3: [("email address!", "email address!</p>")],
+    # Typo in the source text.
+    825: [("new developements, experiments or methods", "new developments, experiments or methods")],
 }
 
 # Whole-body replacements for items whose stored markup is unsalvageable.
 BODY_OVERRIDES = {
     # Pasted from Gmail: inline styles, gmail-* spans, &nbsp; spacer divs.
-    # Wording is unchanged; only markup was removed.
+    # Wording is unchanged; only markup was removed. Two further changes:
+    # the tiny.cc link was removed because the shortener has been recycled
+    # and now redirects to spam, and the four organizers' addresses are
+    # kept as plain text, not links, because the nuigalway.ie domain is
+    # retired.
     804: """The **36th meeting of the European Group of Process Tracing Studies (EGPROC)** will take place in **Galway, Ireland** from the **22nd to the 24th of June 2017** and we are delighted to announce two special guests: Prof. Neil Stewart of Warwick University, and Dr. KongFatt Wong-Lin of Ulster University.
 
 Due to numerous requests, **the deadline for abstract submission has been extended until the 30th of April**.
 
-If you have not done so already, we invite you to submit your abstract through the conference website: <http://tiny.cc/egproc2017>
+If you have not done so already, we invite you to submit your abstract through the conference website.
 
 Please share this information with other researchers who might be interested in the topic.
 
 We look forward to having you in Galway, Ireland.
 
 *EGPROC 2017 organizing committee:*
-Denis O'Hora (<denis.ohora@nuigalway.ie>),
-Arkady Zgonnikov (<arkady.zgonnikov@nuigalway.ie>),
-Avril Hand (<a.hand1@nuigalway.ie>),
-Santi Garcia (<s.garciaguerrero1@nuigalway.ie>)
+Denis O'Hora (denis.ohora@nuigalway.ie),
+Arkady Zgonnikov (arkady.zgonnikov@nuigalway.ie),
+Avril Hand (a.hand1@nuigalway.ie),
+Santi Garcia (s.garciaguerrero1@nuigalway.ie)
 """,
+}
+
+# CONTENT_AUDIT.md detail for each BODY_OVERRIDES id, appended after "body
+# replaced by a plain-text version"; ids without an entry get the default
+# note.
+BODY_OVERRIDE_NOTES = {
+    804: "pasted email markup removed; wording unchanged except: recycled "
+         "tiny.cc link removed, retired nuigalway.ie addresses de-linked",
 }
 
 # Text appended to an item's body (a blank line is inserted before it).

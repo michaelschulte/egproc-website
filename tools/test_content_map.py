@@ -53,6 +53,8 @@ class TestFixes(unittest.TestCase):
         self.assertNotIn("style=", body)
         self.assertIn("30th of April", body)
         self.assertIn("denis.ohora@nuigalway.ie", body)
+        self.assertNotIn("tiny.cc", body)
+        self.assertNotIn("<denis", body)
 
     def test_about_gets_the_eadm_line(self):
         self.assertIn("https://eadm.eu", APPEND[825])

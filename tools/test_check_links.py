@@ -1,7 +1,7 @@
 # tools/test_check_links.py
 import unittest
 
-from check_links import is_mangled_data_uri
+from check_links import _is_internal, is_mangled_data_uri
 
 
 class TestMangledDataUri(unittest.TestCase):
@@ -24,6 +24,25 @@ class TestMangledDataUri(unittest.TestCase):
     def test_accepts_ordinary_paths(self):
         self.assertFalse(is_mangled_data_uri("../images/2023/08/IMG_3047.jpeg"))
         self.assertFalse(is_mangled_data_uri("posts/metadata-notes.html"))
+
+
+class TestIsInternal(unittest.TestCase):
+    CASES = [
+        ("www.python.org", False),
+        ("report.pdf", True),
+        ("contact.html", True),
+        ("#top", False),
+        ("//cdn/x.js", False),
+        ("mailto:a@b.c", False),
+        ("../news/x.html", True),
+        ("/files/2024/08/Program2024.pdf", True),
+        ("https://eadm.eu/", False),
+    ]
+
+    def test_classifies_each_href(self):
+        for href, expected in self.CASES:
+            with self.subTest(href=href):
+                self.assertEqual(_is_internal(href), expected)
 
 
 if __name__ == "__main__":

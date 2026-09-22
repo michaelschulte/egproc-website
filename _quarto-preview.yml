@@ -3,6 +3,13 @@
 # does this). It keeps the preview out of search results so it doesn't
 # compete with egproc.org. A robots.txt can't do that here: crawlers only
 # read it at the domain root, not under the /egproc-website/ project path.
+
+# Overrides _quarto.yml's site-url (egproc.org): the sitemap.xml and
+# robots.txt this preview build ships must describe the preview's own
+# GitHub Pages URL, not the eventual production domain.
+website:
+  site-url: "https://michaelschulte.github.io/egproc-website/"
+
 format:
   html:
     include-in-header:
