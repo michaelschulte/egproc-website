@@ -1,0 +1,10 @@
+---
+pagetitle: "EGPROC — European Group of Process Tracing Studies"
+body-classes: egproc-home
+---
+
+```{=html}
+<h1><img src="images/brand/egproc-logo.png" class="egproc-hero-logo" width="764" height="300" alt="EGPROC — European Group of Process Tracing Studies"></h1>
+```
+
+Placeholder — replaced in Task 7.

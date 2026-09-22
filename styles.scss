@@ -1,0 +1,482 @@
+// Shared rules for both colour modes. The $egproc-* variables are defined
+// per mode in styles-light.scss / styles-dark.scss.
+
+/*-- scss:rules --*/
+
+// ---------------------------------------------------------------------------
+// Logo artwork
+// ---------------------------------------------------------------------------
+
+// The logo is black on transparent, so in dark mode it is simply inverted.
+@mixin egproc-logo-ink {
+  @if $egproc-dark {
+    filter: invert(1);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Navbar
+// ---------------------------------------------------------------------------
+
+// The bar's background still spans the viewport; only its contents are
+// held in a wide centred container, so the logo sits at a consistent
+// left margin instead of hard against the window edge. The container is
+// deliberately wider than the 850px body column: the header reads as site
+// chrome rather than as part of the page.
+$egproc-header-width: 1200px;
+$egproc-header-gutter: 1.5rem;
+
+.navbar {
+  border-bottom: 1px solid $egproc-border;
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem;
+}
+
+// Content scrolls under the bar, so the bar is slightly translucent and
+// blurs what passes beneath it. Browsers without backdrop-filter keep the
+// opaque $navbar-bg set by the theme.
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .navbar {
+    background-color: rgba($navbar-bg, 0.85) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+  }
+}
+
+// No position rule here on purpose: Quarto already renders the header as
+// `<header class="headroom fixed-top">` and reserves its height with
+// `body.nav-fixed { padding-top: 64px }`. Overriding that to `sticky` puts
+// the header back in flow, and the reserved 64px becomes a white gap above
+// the bar.
+
+// Lift the bar off the page only once there is something scrolled under it.
+// Scroll-driven animations are Chromium-only today; elsewhere the hairline
+// border alone separates the bar, which is the intended resting state anyway.
+@keyframes egproc-header-lift {
+  from {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0);
+  }
+
+  to {
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    header#quarto-header {
+      animation: egproc-header-lift linear both;
+      animation-timeline: scroll();
+      animation-range: 0 4rem;
+    }
+  }
+}
+
+.navbar .navbar-container {
+  max-width: $egproc-header-width;
+  margin-inline: auto;
+  padding-inline: $egproc-header-gutter;
+}
+
+.navbar .navbar-brand {
+  margin-right: 1.5rem;
+  flex-shrink: 0; // never crop the logo when space is tight
+}
+
+// Quarto parks the menus hard against the logo via `me-auto`, so the menu
+// list takes the auto margin instead and carries the group right. The brand
+// keeps a real margin as a floor, so the logo can never end up flush against
+// "About EGPROC" when space runs short.
+//
+// The `ms-auto` rule looks dead: Quarto only emits that second .navbar-nav
+// when `navbar.right` is set, and it currently isn't. It stays because
+// re-adding a right-hand item would otherwise give two lists an auto margin,
+// splitting the free space between them and reopening a gap mid-group.
+@include media-breakpoint-up(lg) {
+  .navbar .navbar-brand-container {
+    margin-left: 0;
+    margin-right: 2rem;
+  }
+
+  .navbar .navbar-nav.me-auto {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+
+  .navbar .navbar-nav.ms-auto {
+    margin-left: 0 !important;
+  }
+}
+
+.navbar img.navbar-logo {
+  height: 36px;
+  max-height: none;
+  width: auto;
+  @include egproc-logo-ink;
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+}
+
+@include media-breakpoint-up(lg) {
+  .navbar .navbar-nav .nav-link {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    border-radius: 0.4rem;
+  }
+
+  .navbar .navbar-nav .nav-link.active {
+    box-shadow: inset 0 -2px 0 $egproc-accent;
+    border-radius: 0;
+  }
+}
+
+// Collapsed navbar (below lg). Bootstrap gives the container
+// `justify-content: space-between`, which is invisible on a phone where the
+// row is full but strews the hamburger, logo and icons across a wide
+// collapsed bar. Pack everything to the left instead and send one auto
+// margin -- on the tools, with Quarto's own auto margin on the search box
+// zeroed so the two don't each claim half the slack -- to carry the icon
+// pair to the right.
+@include media-breakpoint-down(lg) {
+  .navbar .navbar-container {
+    justify-content: flex-start;
+  }
+
+  .navbar .navbar-brand-container {
+    margin-left: 0.75rem !important;
+    margin-right: 0 !important;
+  }
+
+  .navbar .quarto-navbar-tools {
+    margin-left: auto;
+  }
+
+  .navbar #quarto-search {
+    margin-left: 0;
+  }
+}
+
+// On phones the hamburger, logo and the toggle/search icons share one row,
+// so the logo must be smaller.
+@include media-breakpoint-down(sm) {
+  .navbar .navbar-container {
+    padding-inline: 1rem;
+  }
+
+  .navbar .navbar-brand {
+    margin-right: 0.5rem;
+  }
+
+  .navbar img.navbar-logo {
+    height: 26px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Typography & page chrome
+// ---------------------------------------------------------------------------
+
+main.content {
+  padding-top: 1.5rem;
+}
+
+#title-block-header {
+  margin-bottom: 1.75rem;
+
+  .title {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  // A short teal rule under each page title, echoing the logo's blocks.
+  &::after {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 4px;
+    margin-top: 0.9rem;
+    border-radius: 2px;
+    background-color: $egproc-accent;
+  }
+}
+
+main.content h2 {
+  border-bottom: 1px solid $egproc-border;
+  padding-bottom: 0.35rem;
+  margin-top: 2.25rem;
+}
+
+main.content a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+main.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+// ---------------------------------------------------------------------------
+// Tables (migrated WordPress content uses raw, unclassed HTML tables)
+// ---------------------------------------------------------------------------
+
+main.content table {
+  max-width: 100%;
+  border-collapse: collapse;
+
+  td,
+  th {
+    vertical-align: top;
+  }
+
+  tr + tr > td,
+  tr + tr > th {
+    border-top: 1px solid $egproc-border;
+  }
+}
+
+// EGPROC meeting tables: the year column links to each programme PDF.
+// Quarto lets links inside tables break anywhere, which splits "2025" into
+// "202/5" on phones, so keep the years whole.
+.egproc-meetings td:first-child a {
+  word-break: normal;
+  white-space: nowrap;
+}
+
+// On phones, tighten cells and let anything still too wide scroll inside
+// the table instead of pushing the whole page sideways.
+@include media-breakpoint-down(sm) {
+  main.content table {
+    display: block;
+    overflow-x: auto;
+    font-size: 0.9rem;
+
+    td,
+    th {
+      padding: 0.5rem 0.45rem;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Listings (News, President's Column)
+// ---------------------------------------------------------------------------
+
+.quarto-listing-default .quarto-post {
+  border: 1px solid $egproc-border;
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: rgba($egproc-accent, 0.55);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  }
+
+  .listing-title {
+    color: $egproc-ink;
+    font-weight: 600;
+  }
+
+  .listing-date {
+    color: $egproc-muted;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Home page
+// ---------------------------------------------------------------------------
+
+// The home page has no title; its heading is the logo <h1>. Quarto still
+// emits an empty title block, which would otherwise show the teal rule.
+.egproc-home {
+  #title-block-header:not(:has(*)) {
+    display: none;
+  }
+
+  h1:has(> .egproc-hero-logo) {
+    margin: 0.5rem 0 1.75rem;
+    line-height: 0;
+  }
+}
+
+main.content img.egproc-hero-logo {
+  display: block;
+  width: 100%;
+  max-width: 36rem;
+  height: auto;
+  @include egproc-logo-ink;
+}
+
+.egproc-hero {
+  margin-bottom: 2.75rem;
+
+  .egproc-lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    max-width: 44rem;
+  }
+
+  // Pandoc wraps the two buttons in a <p>, so that is the flex container.
+  .egproc-actions > p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.5rem 0 0;
+
+    .btn {
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+    }
+  }
+}
+
+.egproc-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 1rem;
+}
+
+.egproc-card {
+  position: relative;
+  border: 1px solid $egproc-border;
+  border-top: 4px solid $egproc-accent;
+  border-radius: 0.75rem;
+  padding: 1.1rem 1.25rem 1.2rem;
+  background-color: $egproc-surface;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  h3 {
+    font-size: 1.2rem;
+    margin: 0 0 0.4rem;
+
+    // :not(.anchorjs-link) is load-bearing. Quarto's anchor.js injects a
+    // second <a> into every `.anchored` heading, so a bare `a` selector
+    // stretches that one over the card as well. Being later in the DOM it
+    // paints on top and takes the click, sending it to the heading's own
+    // #fragment instead of the linked page -- i.e. the card looks dead.
+    a:not(.anchorjs-link) {
+      color: $egproc-ink;
+      text-decoration: none;
+
+      // Make the whole card clickable.
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+    }
+  }
+
+  // A paragraph anchor on a navigation card is meaningless, and it would
+  // otherwise sit on top of the card overlay.
+  .anchorjs-link {
+    display: none;
+  }
+
+  p {
+    margin: 0;
+    color: $egproc-muted;
+    font-size: 0.95rem;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.09);
+
+    h3 a {
+      color: $navbar-hl;
+    }
+  }
+
+  &:focus-within {
+    outline: 2px solid $egproc-accent;
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .egproc-card,
+  .quarto-listing-default .quarto-post {
+    transition: none;
+  }
+
+  .egproc-card:hover {
+    transform: none;
+  }
+}
+
+// "Next meeting" callout on the home page: hand-maintained in index.qmd.
+.egproc-next {
+  border: 1px solid $egproc-border;
+  border-left: 5px solid $egproc-accent;
+  border-radius: 0.75rem;
+  background-color: $egproc-surface;
+  padding: 1.1rem 1.4rem;
+  margin: 0 0 2.5rem;
+
+  h2 {
+    border-bottom: 0;
+    margin: 0 0 0.35rem;
+    padding: 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $egproc-muted;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+}
+
+// Latest-news grid on the home page (Quarto grid listing).
+.egproc-home .quarto-listing .card {
+  border: 1px solid $egproc-border;
+  border-radius: 0.75rem;
+  background-color: $egproc-surface;
+}
+
+// ---------------------------------------------------------------------------
+// Footer
+// ---------------------------------------------------------------------------
+
+// Quarto paints the footer background on .nav-footer itself, so constraining
+// that element would shrink the dark band to the container width and leave
+// white margins beside it. The band and its teal rule move out to the wrapping
+// <footer>; .nav-footer stays as the inner, header-aligned row.
+footer.footer {
+  background-color: $footer-bg;
+  border-top: 3px solid $egproc-accent;
+}
+
+.nav-footer {
+  background-color: transparent;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+
+  // Line the footer text up with the navbar logo above by reusing the
+  // header's container, rather than guessing at a padding that matches.
+  max-width: $egproc-header-width;
+  margin-inline: auto;
+  padding-inline: $egproc-header-gutter;
+
+  @include media-breakpoint-down(sm) {
+    padding-inline: 1rem;
+  }
+
+  a {
+    color: #f6f5f3;
+  }
+}

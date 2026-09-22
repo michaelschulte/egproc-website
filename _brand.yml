@@ -1,0 +1,74 @@
+meta:
+  name: EGPROC
+  link: https://egproc.org
+
+# Artwork is the WordPress site's logo (uploads/2015/05/EGPROC_1.png),
+# unchanged: "mark" is WordPress's own header crop (no taglines) for the
+# navbar, "icon" is the "E" glyph cut out for the favicon. All three are
+# black on transparent, so dark mode simply inverts them with CSS.
+logo:
+  images:
+    mark:
+      path: images/brand/egproc-mark.png
+      alt: EGPROC
+    full:
+      path: images/brand/egproc-logo.png
+      alt: "EGPROC — European Group of Process Tracing Studies"
+    icon: images/brand/favicon.png
+  small: icon
+  medium: mark
+  large: full
+
+# The logo is pure black, so the palette is near-black/white with warm
+# grays and one accent -- a deep teal, deliberately distinct from EADM's
+# red. Links use the deeper (light) or lighter (dark) teal so text/link
+# pairs meet WCAG AA.
+color:
+  palette:
+    egproc-teal: "#0f6e6e"
+    egproc-teal-soft: "#5cc8c8"
+    egproc-ink: "#1d1d1f"
+    egproc-charcoal: "#3a3a3d"
+    egproc-gray: "#5f5f63"
+    egproc-paper: "#f6f5f3"
+    egproc-night: "#151517"
+    egproc-night-raised: "#1f1f22"
+    egproc-mist: "#e6e4e1"
+    egproc-mist-muted: "#a8a6a3"
+  primary:
+    light: egproc-teal
+    dark: egproc-teal-soft
+  secondary:
+    light: egproc-gray
+    dark: egproc-mist-muted
+  foreground:
+    light: egproc-charcoal
+    dark: egproc-mist
+  background:
+    light: "#ffffff"
+    dark: egproc-night
+
+typography:
+  fonts:
+    - family: Inter
+      source: google
+      weight: [400, 500, 600, 700]
+      style: [normal, italic]
+    # Geometric sans echoing the logo's lettering.
+    - family: Outfit
+      source: google
+      weight: [500, 600, 700]
+  base:
+    family: Inter
+    size: 1rem
+    line-height: 1.65
+  headings:
+    family: Outfit
+    weight: 600
+    line-height: 1.2
+    color:
+      light: egproc-ink
+      dark: egproc-mist
+  link:
+    color: primary
+    weight: 500

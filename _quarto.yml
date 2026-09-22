@@ -1,0 +1,51 @@
+project:
+  type: website
+  brand: _brand.yml
+  # docs/ holds the migration's spec and plan (provenance, not site
+  # content), so it must not be rendered or indexed for search.
+  render:
+    - "*.qmd"
+    - "*.md"
+    - "!docs/"
+  # All 20 PDF attachments are vendored into files/ deliberately, including
+  # ones no kept page links to. Quarto only copies *referenced* resources,
+  # so without this the unreferenced ones would never deploy.
+  resources:
+    - files/
+
+website:
+  title: "EGPROC"
+  site-url: "https://egproc.org"
+  description: "European Group of Process Tracing Studies"
+  favicon: images/brand/favicon.png
+  navbar:
+    # The logo links home, so there's no separate "Home" item.
+    logo: images/brand/egproc-mark.png
+    logo-alt: "EGPROC home"
+    title: false
+    collapse-below: lg
+    left:
+      - href: about/index.qmd
+        text: About
+      - href: meetings/index.qmd
+        text: Meetings
+      - href: news/index.qmd
+        text: News
+      - href: mailing-list/index.qmd
+        text: Mailing List
+  page-footer:
+    left: "EGPROC — European Group of Process Tracing Studies"
+    right: "[Mailing List](/mailing-list/index.qmd) · [EADM](https://eadm.eu)"
+
+format:
+  html:
+    # "brand" must be listed explicitly: without it _brand.yml gets the
+    # lowest priority and the Bootswatch theme's own colours and fonts win.
+    # styles-light/-dark set per-mode palette variables; styles.scss holds
+    # the rules shared by both.
+    theme:
+      light: [cosmo, brand, styles-light.scss, styles.scss]
+      dark: [cosmo, brand, styles-dark.scss, styles.scss]
+    toc: false
+    grid:
+      body-width: 850px
