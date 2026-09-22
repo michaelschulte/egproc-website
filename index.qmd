@@ -1,10 +1,68 @@
 ---
+# No `title`: the full logo <h1> below is the page heading (a title would
+# add a second heading above it; the body class hooks the home styles).
 pagetitle: "EGPROC — European Group of Process Tracing Studies"
 body-classes: egproc-home
+listing:
+  id: latest-news
+  contents: ["news/*.qmd", "!news/index.qmd"]
+  type: grid
+  grid-columns: 3
+  sort: "date desc"
+  max-items: 3
+  categories: false
+  fields: [date, title]
 ---
 
 ```{=html}
 <h1><img src="images/brand/egproc-logo.png" class="egproc-hero-logo" width="764" height="300" alt="EGPROC — European Group of Process Tracing Studies"></h1>
 ```
 
-Placeholder — replaced in Task 7.
+::: {.egproc-next}
+## Next meeting
+**EGPROC 2026** — Warwick, United Kingdom, 16–17 July 2026.
+[Registration and details](news/egproc-2026.qmd)
+:::
+
+::: {.egproc-hero}
+
+::: {.egproc-lead}
+EGPROC is a group of researchers who share a common interest in process
+tracing methods and theory. Every year the group meets to discuss new
+developments, experiments and methods in the area of process tracing.
+:::
+
+::: {.egproc-actions}
+[Past meetings](meetings/index.qmd){.btn .btn-primary}
+[Join the mailing list](mailing-list/index.qmd){.btn .btn-outline-secondary}
+:::
+
+:::
+
+## Latest news
+
+::: {#latest-news}
+:::
+
+[All news →](news/index.qmd)
+
+## Explore
+
+:::::: {.egproc-cards}
+
+::: {.egproc-card}
+### [About EGPROC](about/index.qmd)
+Who we are and what we do.
+:::
+
+::: {.egproc-card}
+### [Meetings](meetings/index.qmd)
+Every EGPROC meeting since 1982, with programs.
+:::
+
+::: {.egproc-card}
+### [Mailing list](mailing-list/index.qmd)
+Stay informed about EGPROC activities.
+:::
+
+::::::

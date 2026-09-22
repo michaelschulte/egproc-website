@@ -1,11 +1,11 @@
 project:
   type: website
   brand: _brand.yml
-  # docs/ holds the migration's spec and plan (provenance, not site
-  # content), so it must not be rendered or indexed for search.
+  # CONTENT_AUDIT.md and README.md are repository documentation, not site
+  # pages, so only .qmd files are rendered. docs/ holds the migration's
+  # spec and plan (provenance, not site content) and is excluded too.
   render:
     - "*.qmd"
-    - "*.md"
     - "!docs/"
   # All 20 PDF attachments are vendored into files/ deliberately, including
   # ones no kept page links to. Quarto only copies *referenced* resources,

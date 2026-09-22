@@ -86,7 +86,7 @@ $egproc-header-gutter: 1.5rem;
 // Quarto parks the menus hard against the logo via `me-auto`, so the menu
 // list takes the auto margin instead and carries the group right. The brand
 // keeps a real margin as a floor, so the logo can never end up flush against
-// "About EGPROC" when space runs short.
+// "About" when space runs short.
 //
 // The `ms-auto` rule looks dead: Quarto only emits that second .navbar-nav
 // when `navbar.right` is set, and it currently isn't. It stays because
