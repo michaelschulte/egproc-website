@@ -15,6 +15,9 @@ DROP_IDS = {
          "placeholder; replaced by the Quarto news listing.",
     1: "WordPress default 'Hallo Welt!' post.",
     4: "One-line date test post ('Test des Datums.').",
+    827: "Empty body in the database ('EGPROC 2020 in Tilburg!'); the 2020 "
+         "meeting is fully covered by the 'Abstract submission for EGPROC "
+         "2020 is open!' post.",
 }
 
 # Kept pages: WordPress id -> (section directory, filename without .qmd).
@@ -57,6 +60,8 @@ TEXT_FIXES = {
     ],
     # The 2017 poster image had an empty alt.
     793: [('alt=""', 'alt="EGPROC 2017 poster"')],
+    # The WordPress HTML block never closed its <p> tag.
+    3: [("email address!", "email address!</p>")],
 }
 
 # Whole-body replacements for items whose stored markup is unsalvageable.

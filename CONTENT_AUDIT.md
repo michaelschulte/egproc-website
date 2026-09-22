@@ -11,9 +11,11 @@ why, every text fix applied, and where each migrated item landed.
 - **Test** (WP id 4, slug `test`): One-line date test post ('Test des Datums.').
 - **Gallery** (WP id 18, slug `gallery`): Gallery: body is only a NextGEN [album=1,extend] shortcode; the plugin and its images are not in the export, so there is nothing to show.
 - **News** (WP id 772, slug `news`): Empty 'News' page that only served as WordPress's posts-page placeholder; replaced by the Quarto news listing.
+- **EGPROC 2020 in Tilburg!** (WP id 827, slug `egproc-2020-in-tilburg`): Empty body in the database ('EGPROC 2020 in Tilburg!'); the 2020 meeting is fully covered by the 'Abstract submission for EGPROC 2020 is open!' post.
 
 ## Content fixes
 
+- WP id 3: `email address!` → `email address!</p>`
 - WP id 64: `1016 Warwik, United Kingdom, Program (Walasek &amp; Mullett)` → `2026 Warwick, United Kingdom, <a href="/news/egproc-2026.qmd">Program</a> (Walasek &amp; Mullett)`
 - WP id 788: `https://vimeo.com/105023242` → `<a href="https://vimeo.com/105023242">Video: Galway (Vimeo)</a>`
 - WP id 793: `alt=""` → `alt="EGPROC 2017 poster"`
@@ -23,7 +25,7 @@ why, every text fix applied, and where each migrated item landed.
 - Program links on the dead host `eadm.abcde.biz` and on `egproc.org/wp-content/uploads/` point at the vendored PDFs in `files/`.
 - History page rendered as a table (Year · Place · Organisers · Program).
 
-## Migrated: 26 items
+## Migrated: 25 items
 
 - **About** (WP id 825) → about/index.qmd
 - **Mailing List** (WP id 3) → mailing-list/index.qmd
@@ -39,7 +41,6 @@ why, every text fix applied, and where each migrated item landed.
 - **EGPROC 2016 in Bonn - Program is available** (WP id 776) → news/egproc-2016-in-bonn-program-is-available.qmd
 - **EGPROC 2017 will be in Ireland** (WP id 783) → news/egproc-2017-will-be-in-ireland.qmd
 - **EGPROC 2018 - Aarhus University** (WP id 809) → news/egproc-2018-aarhus-university.qmd
-- **EGPROC 2020 in Tilburg!** (WP id 827) → news/egproc-2020-in-tilburg.qmd
 - **EGPROC 2022 in Amsterdam** (WP id 854) → news/egproc-2022-in-amsterdam.qmd
 - **EGPROC 2023 in Vienna** (WP id 859) → news/egproc-2023-in-vienna.qmd
 - **EGPROC 2024 in Berlin** (WP id 881) → news/egproc-2024-in-berlin.qmd

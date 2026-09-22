@@ -23,7 +23,7 @@ class TestResolveTarget(unittest.TestCase):
     def test_dropped_pages_and_posts_return_none(self):
         for id_, slug in [(2, "beispiel-seite"), (18, "gallery"), (772, "news")]:
             self.assertIsNone(resolve_target(page(id_, slug)), slug)
-        for id_, slug in [(1, "hallo-welt"), (4, "test")]:
+        for id_, slug in [(1, "hallo-welt"), (4, "test"), (827, "egproc-2020-in-tilburg")]:
             self.assertIsNone(resolve_target(post(id_, slug)), slug)
 
     def test_every_drop_has_a_reason(self):
