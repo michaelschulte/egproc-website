@@ -1,0 +1,5 @@
+---
+title: "Mailing List"
+---
+
+<p>If you want to stay informed about EGPROC and its activities - sign up to the mailing list by sending an <a href= "mailto:egproc.imu.request@lists.unibe.ch?subject=subscribe=">email with the subject line 'subscribe=' and your email address after the '='</a>. You must provide a valid email address!

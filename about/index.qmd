@@ -1,0 +1,7 @@
+---
+title: "About"
+---
+
+EGPROC is a group of researchers who share a common interest in process tracing methods and theory. Every year the group meets to discuss new developements, experiments or methods in the area of process tracing.
+
+EGPROC is closely associated with the [European Association for Decision Making (EADM)](https://eadm.eu), whose members make up most of the group.

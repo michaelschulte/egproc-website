@@ -1,0 +1,56 @@
+---
+title: "History"
+---
+
+This is the complete list of EGPROC conferences over the years.
+A map of all these places can be found <a href="http://maps.google.com/maps/ms?vps=2&amp;hl=en&amp;ie=UTF8&amp;oe=UTF8&amp;msa=0&amp;msid=201165190013696158761.0004be7d03464ef613c01">here</a>.
+
+<table class="egproc-meetings">
+<thead><tr><th>Year</th><th>Place</th><th>Organisers</th><th>Program</th></tr></thead>
+<tbody>
+<tr><td>2026</td><td>Warwick, United Kingdom</td><td>Walasek &amp; Mullett</td><td><a href="/news/egproc-2026.qmd">Program</a></td></tr>
+<tr><td>2025</td><td>Den Bosch, The Netherlands</td><td><a href="https://scholar.google.com/citations?user=BUb4R68AAAAJ&amp;hl=en">Matej Hrkalovic</a>, <a href="https://www.tue.nl/en/research/researchers/martijn-willemsen">Willemsen, </a><a href="https://www.antoniakrefeldschwalb.com">Krefeld-Schwalb</a></td><td><a href="/news/egproc-2025-comes-to-an-end.qmd">Program</a></td></tr>
+<tr><td>2024</td><td>Berlin, Germany</td><td>Bolenz, Fulawka, Wulff</td><td><a href="/files/2024/08/Program2024.pdf">PDF</a></td></tr>
+<tr><td>2023</td><td>Vienna, Austria</td><td>Fiedler</td><td><a href="/files/2023/08/Program2023.pdf">PDF</a></td></tr>
+<tr><td>2022</td><td>Amsterdam, The Netherlands</td><td>Hausfeld</td><td><a href="/files/2022/09/Program2022.pdf">PDF</a></td></tr>
+<tr><td>2020/21</td><td>Tilburg, The Netherlands</td><td>Rahal</td><td><a href="/files/2021/06/Program2021.pdf">PDF</a></td></tr>
+<tr><td>2019</td><td>Dresden, Germany</td><td>Scherbaum</td><td><a href="/files/2019/06/Program2019.pdf">PDF</a></td></tr>
+<tr><td>2018</td><td>Aarhus, Danmark</td><td>Orquin</td><td><a href="/files/2012/02/Program2018.pdf">PDF</a></td></tr>
+<tr><td>2017</td><td>Galway, Ireland</td><td>O'Hora</td><td><a href="/files/2017/06/EGPROC_2017_Programme.pdf">PDF</a></td></tr>
+<tr><td>2016</td><td>Bonn, Germany</td><td>Fiedler</td><td><a href="/files/2012/02/Program2016.pdf">PDF</a></td></tr>
+<tr><td>2015</td><td>Berlin, Germany</td><td>Schulte-Mecklenbeck, Jarecki, Söder</td><td><a href="/files/2014/11/ProgramEGPROC2015.pdf">PDF</a></td></tr>
+<tr><td>2014</td><td>Salzburg, Austria</td><td>Scherndl, Kühberger</td><td><a href="/files/2014/03/Program2014.pdf">PDF</a></td></tr>
+<tr><td>2013</td><td>Warsaw, Poland</td><td>Macko, Tyszka</td><td><a title="Program" href="/files/2013/04/Program2013.pdf">PDF</a></td></tr>
+<tr><td>2012</td><td>Bolton, Great Britain</td><td>Ranyard, Kostopoulou</td><td><a href="/files/2012/05/Programme2012.pdf">PDF</a></td></tr>
+<tr><td>2011</td><td>Greifswald, Germany</td><td>Hiemisch</td><td><a href="/files/2011/05/Abstract-2011.pdf">PDF</a></td></tr>
+<tr><td>2010</td><td>Wroclaw, Poland</td><td>Zaleskiewicz</td><td></td></tr>
+<tr><td>2009</td><td>Fribourg, Switzerland</td><td>Huber, Huber</td><td><a href="/files/2009/04/egproc-2009-fribourg.pdf">PDF</a></td></tr>
+<tr><td>2008</td><td>Bergen, Norway</td><td>Brun, Schulte-Mecklenbeck, Kobbeltvedt</td><td></td></tr>
+<tr><td>2007</td><td>Barcelona, Spain</td><td>Roca</td><td></td></tr>
+<tr><td>2006</td><td>Leeds, Great Britain</td><td>Maule, Ranyard</td><td></td></tr>
+<tr><td>2005</td><td>Rovereto, Italy</td><td>Bonini, Del Missier</td><td></td></tr>
+<tr><td>2004</td><td>Salzburg, Austria</td><td>Kühberger</td><td></td></tr>
+<tr><td>2003</td><td>Nijmegen, The Netherlands</td><td>Witteman</td><td></td></tr>
+<tr><td>2002</td><td>Leeds, Great Britain</td><td>Maule</td><td></td></tr>
+<tr><td>2001</td><td>Lviv, Ukrain</td><td>Lewicka</td><td></td></tr>
+<tr><td>2000</td><td>Gothenburg, Sweden</td><td>Gärling</td><td></td></tr>
+<tr><td>1999</td><td>Warsaw, Poland</td><td>Tyszka, Sokolowska,Lewicka</td><td></td></tr>
+<tr><td>1998</td><td>Tromsø, Norway</td><td>Teigen</td><td></td></tr>
+<tr><td>1997</td><td>Leeds, Great Britain</td><td>Maule, Zakay</td><td></td></tr>
+<tr><td>1996</td><td>Stockholm, Sweden</td><td>Edland</td><td></td></tr>
+<tr><td>1995</td><td>Salzburg, Austria</td><td>Kühberger</td><td></td></tr>
+<tr><td>1994</td><td>Amsterdam, The Netherlands</td><td>Westenberg, Harte, Koele</td><td></td></tr>
+<tr><td>1993</td><td>Prague, Czech Republic</td><td>Lewicka</td><td></td></tr>
+<tr><td>1992</td><td>Warsaw, Poland</td><td>Tyszka, Lewicka</td><td></td></tr>
+<tr><td>1991</td><td>Borwick, Great Britain</td><td>Ranyard, Crozier</td><td></td></tr>
+<tr><td>1990</td><td>Fribourg, Switzerland</td><td>Huber</td><td></td></tr>
+<tr><td>1989</td><td>Borwick, England</td><td>Ranyard, Crozier</td><td></td></tr>
+<tr><td>1988</td><td>Lund, Sweden</td><td>Svenson</td><td></td></tr>
+<tr><td>1987</td><td>Nieborow, Poland</td><td>Tyszka</td><td></td></tr>
+<tr><td>1986</td><td>Gothenburg, Sweden</td><td>Svenson, Montgomery</td><td></td></tr>
+<tr><td>1985</td><td>Fribourg, Switzerland</td><td>Huber</td><td></td></tr>
+<tr><td>1984</td><td>Bolton, Great Britain</td><td>Ranyard</td><td></td></tr>
+<tr><td>1983</td><td>Torun, Poland</td><td>Tyszka</td><td></td></tr>
+<tr><td>1982</td><td>Gothenburg, Sweden</td><td>Svenson, Montgomery</td><td></td></tr>
+</tbody>
+</table>

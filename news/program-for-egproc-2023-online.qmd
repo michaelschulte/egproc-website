@@ -1,0 +1,6 @@
+---
+title: "Program for EGPROC 2023 online"
+date: 2023-08-14
+---
+
+<p>EGPROC is around the corner - you can find the program <a href="/files/2023/08/Program2023.pdf">here</a>.</p>
