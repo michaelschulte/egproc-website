@@ -19,6 +19,7 @@ why, every text fix applied, and where each migrated item landed.
 - WP id 64: `1016 Warwik, United Kingdom, Program (Walasek &amp; Mullett)` → `2026 Warwick, United Kingdom, <a href="/news/egproc-2026.qmd">Program</a> (Walasek &amp; Mullett)`
 - WP id 788: `https://vimeo.com/105023242` → `<a href="https://vimeo.com/105023242">Video: Galway (Vimeo)</a>`
 - WP id 793: `alt=""` → `alt="EGPROC 2017 poster"`
+- WP id 64: title "History" → "Meetings" (matches the navbar item).
 - WP id 804: body replaced by a plain-text version (pasted email markup removed; wording unchanged).
 - WP id 825: appended: EGPROC is closely associated with the [European Association for Decision Making (EADM)](https://eadm.eu), whose members make up most of the group.
 - Outlook safelinks wrappers unwrapped; Gutenberg block comments, empty paragraphs and `&nbsp;` spacers removed everywhere.

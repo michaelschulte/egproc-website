@@ -27,6 +27,14 @@ PAGE_TARGETS = {
     MEETINGS_PAGE_ID: ("meetings", "index"),
 }
 
+# WordPress id -> title to use instead of the item's own title. The
+# meetings page's WordPress title was "History"; the site's navbar item
+# and home-page card both say "Meetings", so the page title is retitled
+# to match.
+TITLE_OVERRIDES = {
+    MEETINGS_PAGE_ID: "Meetings",
+}
+
 
 def resolve_target(item):
     """(section, filename) for a kept item, None for a dropped one.

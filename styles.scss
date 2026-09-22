@@ -233,6 +233,11 @@ main.content table {
   td,
   th {
     vertical-align: top;
+    padding: 0.45rem 1rem 0.45rem 0;
+
+    &:last-child {
+      padding-right: 0;
+    }
   }
 
   tr + tr > td,
@@ -439,6 +444,19 @@ main.content img.egproc-hero-logo {
     margin: 0;
     font-size: 1.15rem;
   }
+}
+
+// `main.content h2` (Typography & page chrome, above) has higher
+// specificity (two type selectors + one class) than `.egproc-next h2`
+// (one type selector + one class), so its border-bottom, padding-bottom
+// and margin-top win over the reset above despite coming first in the
+// file -- leaving a stray divider line and extra top gap under "Next
+// meeting". Matching that selector's specificity here (one more class)
+// beats it cleanly instead of guessing at source order.
+main.content .egproc-next h2 {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-top: 0;
 }
 
 // Latest-news grid on the home page (Quarto grid listing).

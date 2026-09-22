@@ -9,7 +9,8 @@ import json
 from pathlib import Path
 
 from content_map import (
-    APPEND, BODY_OVERRIDES, DROP_IDS, MEETINGS_PAGE_ID, TEXT_FIXES, resolve_target,
+    APPEND, BODY_OVERRIDES, DROP_IDS, MEETINGS_PAGE_ID, TEXT_FIXES, TITLE_OVERRIDES,
+    resolve_target,
 )
 from media import copy_and_get_url
 from rewrite import (
@@ -36,7 +37,8 @@ def yaml_quote(value):
 
 
 def build_frontmatter(item, section):
-    lines = ["---", f'title: "{yaml_quote(item["title"])}"']
+    title = TITLE_OVERRIDES.get(item["id"], item["title"])
+    lines = ["---", f'title: "{yaml_quote(title)}"']
     if item["type"] == "post":
         lines.append(f"date: {item['date'][:10]}")
     lines.append("---")
@@ -110,6 +112,10 @@ def write_content_audit(dropped, written):
     for id_, fixes in sorted(TEXT_FIXES.items()):
         for old, new in fixes:
             lines.append(f"- WP id {id_}: `{old}` → `{new}`")
+    original_titles = {item["id"]: item["title"] for item, _, _ in written}
+    for id_, new_title in sorted(TITLE_OVERRIDES.items()):
+        lines.append(f'- WP id {id_}: title "{original_titles[id_]}" → '
+                     f'"{new_title}" (matches the navbar item).')
     for id_ in sorted(BODY_OVERRIDES):
         lines.append(f"- WP id {id_}: body replaced by a plain-text version "
                      "(pasted email markup removed; wording unchanged).")

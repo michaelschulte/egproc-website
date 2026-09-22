@@ -1,5 +1,5 @@
 ---
-title: "History"
+title: "Meetings"
 ---
 
 This is the complete list of EGPROC conferences over the years.

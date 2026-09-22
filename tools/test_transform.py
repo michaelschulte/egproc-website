@@ -16,6 +16,10 @@ class TestFrontmatter(unittest.TestCase):
         item = {"id": 825, "type": "page", "title": 'Say "hi"', "date": "2009-02-10 00:00:00"}
         self.assertEqual(build_frontmatter(item, "about"), '---\ntitle: "Say \\"hi\\""\n---')
 
+    def test_meetings_page_title_is_overridden_to_match_the_navbar(self):
+        item = {"id": 64, "type": "page", "title": "History", "date": "2012-02-07 00:00:00"}
+        self.assertEqual(build_frontmatter(item, "meetings"), '---\ntitle: "Meetings"\n---')
+
 
 class TestTransformContent(unittest.TestCase):
     def setUp(self):
