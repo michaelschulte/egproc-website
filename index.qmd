@@ -4,6 +4,8 @@
 pagetitle: "EGPROC — European Group of Process Tracing Studies"
 body-classes: egproc-home
 # The single newest post from news/, shown in the box under the logo.
+# The description comes from the post's `description` front matter, or
+# from its first paragraph when there is none.
 listing:
   id: latest-news
   contents: ["news/*.qmd", "!news/index.qmd"]
@@ -11,7 +13,8 @@ listing:
   sort: "date desc"
   max-items: 1
   categories: false
-  fields: [date, title]
+  fields: [date, title, description]
+  max-description-length: 300
 ---
 
 ```{=html}
