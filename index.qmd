@@ -41,24 +41,3 @@ developments, experiments or methods in the area of process tracing.
 :::
 
 :::
-
-## Explore
-
-:::::: {.egproc-cards}
-
-::: {.egproc-card}
-### [About EGPROC](about/index.qmd)
-Who we are and what we do.
-:::
-
-::: {.egproc-card}
-### [Meetings](meetings/index.qmd)
-Every EGPROC meeting since 1982, with programs.
-:::
-
-::: {.egproc-card}
-### [Mailing list](mailing-list/index.qmd)
-Stay informed about EGPROC activities.
-:::
-
-::::::
