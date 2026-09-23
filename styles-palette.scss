@@ -1,10 +1,9 @@
-// Light-mode palette. Hex values mirror _brand.yml's palette; they are
+// Site palette. Hex values mirror _brand.yml's palette; they are
 // repeated here because Sass defaults can't reference brand variables
 // (the brand layer is compiled after this file's defaults).
 
 /*-- scss:defaults --*/
 
-$egproc-dark: false;
 $egproc-accent: #0f6e6e;
 $egproc-ink: #1d1d1f;
 $egproc-muted: #5f5f63;

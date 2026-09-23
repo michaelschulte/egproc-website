@@ -41,11 +41,9 @@ format:
   html:
     # "brand" must be listed explicitly: without it _brand.yml gets the
     # lowest priority and the Bootswatch theme's own colours and fonts win.
-    # styles-light/-dark set per-mode palette variables; styles.scss holds
-    # the rules shared by both.
-    theme:
-      light: [cosmo, brand, styles-light.scss, styles.scss]
-      dark: [cosmo, brand, styles-dark.scss, styles.scss]
+    # styles-palette.scss sets the palette variables; styles.scss holds the
+    # layout and component rules. A single (light) theme: no dark toggle.
+    theme: [cosmo, brand, styles-palette.scss, styles.scss]
     toc: false
     grid:
       body-width: 850px

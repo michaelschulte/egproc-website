@@ -1,18 +1,7 @@
-// Shared rules for both colour modes. The $egproc-* variables are defined
-// per mode in styles-light.scss / styles-dark.scss.
+// Layout and component rules. The $egproc-* palette variables are defined
+// in styles-palette.scss.
 
 /*-- scss:rules --*/
-
-// ---------------------------------------------------------------------------
-// Logo artwork
-// ---------------------------------------------------------------------------
-
-// The logo is black on transparent, so in dark mode it is simply inverted.
-@mixin egproc-logo-ink {
-  @if $egproc-dark {
-    filter: invert(1);
-  }
-}
 
 // ---------------------------------------------------------------------------
 // Navbar
@@ -112,7 +101,6 @@ $egproc-header-gutter: 1.5rem;
   height: 36px;
   max-height: none;
   width: auto;
-  @include egproc-logo-ink;
 }
 
 .navbar .nav-link {
@@ -309,6 +297,7 @@ main.content table {
   h1:has(> .egproc-hero-logo) {
     margin: 0.5rem 0 1.75rem;
     line-height: 0;
+    text-align: center;
   }
 }
 
@@ -317,7 +306,7 @@ main.content img.egproc-hero-logo {
   width: 100%;
   max-width: 36rem;
   height: auto;
-  @include egproc-logo-ink;
+  margin-inline: auto;
 }
 
 .egproc-hero {
@@ -421,7 +410,8 @@ main.content img.egproc-hero-logo {
   }
 }
 
-// "Next meeting" callout on the home page: hand-maintained in index.qmd.
+// "Latest news" box under the logo on the home page. Its content is a
+// one-item Quarto listing (index.qmd), so it needs no hand maintenance.
 .egproc-next {
   border: 1px solid $egproc-border;
   border-left: 5px solid $egproc-accent;
@@ -440,9 +430,36 @@ main.content img.egproc-hero-logo {
     color: $egproc-muted;
   }
 
-  p {
+  // The listing's single post: no card chrome of its own inside the box,
+  // and stacked (Quarto's default listing lays body and metadata out as
+  // grid columns, which floats the title away from the date).
+  .quarto-listing-default .quarto-post {
+    display: block;
+    border: 0;
+    padding: 0;
     margin: 0;
-    font-size: 1.15rem;
+    background: transparent;
+    box-shadow: none;
+
+    .listing-title {
+      font-size: 1.15rem;
+      margin: 0;
+    }
+
+    .metadata {
+      margin-top: 0.15rem;
+    }
+
+    .listing-date {
+      color: $egproc-muted;
+      font-size: 0.9rem;
+    }
+  }
+
+  .egproc-next-more {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -450,20 +467,13 @@ main.content img.egproc-hero-logo {
 // specificity (two type selectors + one class) than `.egproc-next h2`
 // (one type selector + one class), so its border-bottom, padding-bottom
 // and margin-top win over the reset above despite coming first in the
-// file -- leaving a stray divider line and extra top gap under "Next
-// meeting". Matching that selector's specificity here (one more class)
+// file -- leaving a stray divider line and extra top gap under "Latest
+// news". Matching that selector's specificity here (one more class)
 // beats it cleanly instead of guessing at source order.
 main.content .egproc-next h2 {
   border-bottom: 0;
   padding-bottom: 0;
   margin-top: 0;
-}
-
-// Latest-news grid on the home page (Quarto grid listing).
-.egproc-home .quarto-listing .card {
-  border: 1px solid $egproc-border;
-  border-radius: 0.75rem;
-  background-color: $egproc-surface;
 }
 
 // ---------------------------------------------------------------------------

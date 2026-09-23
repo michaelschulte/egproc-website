@@ -3,13 +3,13 @@
 # add a second heading above it; the body class hooks the home styles).
 pagetitle: "EGPROC — European Group of Process Tracing Studies"
 body-classes: egproc-home
+# The single newest post from news/, shown in the box under the logo.
 listing:
   id: latest-news
   contents: ["news/*.qmd", "!news/index.qmd"]
-  type: grid
-  grid-columns: 3
+  type: default
   sort: "date desc"
-  max-items: 3
+  max-items: 1
   categories: false
   fields: [date, title]
 ---
@@ -19,9 +19,12 @@ listing:
 ```
 
 ::: {.egproc-next}
-## Next meeting
-**EGPROC 2026** — Warwick, United Kingdom, 16–17 July 2026.
-[Registration and details](news/egproc-2026.qmd)
+## Latest news
+
+::: {#latest-news}
+:::
+
+[All news →](news/index.qmd){.egproc-next-more}
 :::
 
 ::: {.egproc-hero}
@@ -38,13 +41,6 @@ developments, experiments or methods in the area of process tracing.
 :::
 
 :::
-
-## Latest news
-
-::: {#latest-news}
-:::
-
-[All news →](news/index.qmd)
 
 ## Explore
 
